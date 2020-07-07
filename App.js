@@ -1,13 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const App = () => (
-  <View style={styles.container}>
-    <Text>Open up App.js to start working on your app!</Text>
-    <StatusBar style="auto" />
-  </View>
-);
+const App = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <View style={styles.container}>
+      {isLoaded ? null : (
+        <View style={styles.loading}>
+          <Text style={styles.loadingText}>Getting the weather</Text>
+        </View>
+      )}
+    </View>
+  );
+};
 
 export default App;
 
@@ -15,7 +22,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  loading: {
+    flex: 1,
+    backgroundColor: "#FDF6AA",
+    justifyContent: "flex-end",
+    paddingRight: 25,
+  },
+  loadingText: {
+    fontSize: 38,
+    marginBottom: 100,
   },
 });
