@@ -13,7 +13,7 @@ const reducer = (state, weather) => {
 };
 
 const App = () => {
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
   const [weather, dispatch] = useReducer(reducer, {
     temperature: null,
@@ -42,6 +42,7 @@ const App = () => {
           name: data.weather[0].main,
         };
         dispatch(weather);
+        setIsLoaded(true);
       });
   };
 
